@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Box, Button } from "@chakra-ui/react";
 import LabeledDropdown from "../molecules/LabeledDropdown";
 import LabeledInput from "../molecules/LabeledInput";
+import { LabeledDateInput } from "../molecules/LabeledDateInput";
 
 const SalesManagementForm: React.FC = () => {
   const [costPrice, setCostPrice] = useState<number>(0);
   const [sellingPrice, setSellingPrice] = useState<number>(0);
   const [grossMaqrgin, setGrossMargin] = useState<number>(0);
   const [marginPercentage, setMarginPercentage] = useState<number>(0);
+  const [date, setDate] = useState<string>("");
   const [shop, setShop] = useState("");
 
   const options = [
@@ -26,6 +28,11 @@ const SalesManagementForm: React.FC = () => {
   }, [costPrice, sellingPrice]);
   return (
     <Box as="form">
+      <LabeledDateInput
+        label="Date"
+        value="date"
+        onChange={(e) => setDate(e.target.value)}
+      />
       <LabeledDropdown
         label="shop"
         options={options}
